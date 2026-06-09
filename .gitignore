@@ -1,0 +1,13 @@
+# Backend
+pp-backend/node_modules
+pp-backend/dist
+pp-backend/.env
+
+# Frontend
+pp-frontend/node_modules
+pp-frontend/dist
+pp-frontend/.env
+
+# General
+.vscode
+.DS_Store
