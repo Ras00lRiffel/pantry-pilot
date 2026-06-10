@@ -1,12 +1,14 @@
 import { Router } from "express";
 import {
   getPantry,
-  addIngredient
+  addPantryItem,
+  removePantryItem,
 } from "../controllers/pantry.controller";
 
 const router = Router();
 
-router.get("/:householdId", getPantry);
-router.post("/add", addIngredient);
+router.get("/", getPantry);
+router.post("/add", addPantryItem);
+router.post("/remove", removePantryItem);
 
 export default router;
