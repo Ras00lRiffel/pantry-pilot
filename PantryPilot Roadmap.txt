@@ -1,231 +1,105 @@
-PANTRYPILOT ROADMAP
-===================
+PANTRYPILOT - SESSION SUMMARY
+=============================
 
-CURRENT STATUS
---------------
-✅ Backend setup complete
-✅ TypeScript + Express configured
-✅ MySQL database connected
-✅ VS Code debugger working
-
-✅ Recipes CRUD
-✅ Recipe Search API
-✅ Recipe Filter API
-
-✅ Ingredients CRUD
-✅ Ingredient Search API
-
-✅ Recipe ↔ Ingredient linking
-✅ Recipe Details API
-✅ Add ingredient to recipe
-✅ Update recipe ingredient
-✅ Remove recipe ingredient
-
---------------------------------------------------
-
-MVP BACKEND REMAINING (DO THESE NEXT)
--------------------------------------
-
-1. HOUSEHOLDS MODULE
---------------------
-Endpoints:
-GET    /households
-GET    /households/:id
-POST   /households
-PUT    /households/:id
-DELETE /households/:id
-
-Suggested Fields:
-id
-name
-adults
-children
-toddlers
-created_at
-
-Status:
-⬜ Not Started
-
-
-2. PANTRY MODULE
+WHAT WE DID LAST
 ----------------
-Endpoints:
-GET    /pantry
-GET    /pantry/:id
-POST   /pantry
-PUT    /pantry/:id
-DELETE /pantry/:id
 
-Current Table:
-pantry_items
+BACKEND
+- Completed Express + TypeScript backend setup
+- Connected MySQL database successfully
+- Built full Recipes CRUD API
+  - GET /recipes
+  - GET /recipes/:id
+  - POST /recipes
+  - PUT /recipes/:id
+  - DELETE /recipes/:id
+- Added recipe search and filter endpoints
 
-Status:
-🟨 Partially Built
-⬜ Finish CRUD
+- Built Ingredients CRUD API
+  - GET /ingredients
+  - GET /ingredients/:id
+  - POST /ingredients
+  - PUT /ingredients/:id
+  - DELETE /ingredients/:id
+  - GET /ingredients/search
 
+- Created relational system:
+  - recipes ↔ recipe_ingredients ↔ ingredients
+- Implemented full recipe ingredient linking system:
+  - POST /recipes/:id/ingredients
+  - GET /recipes/:id/details
+  - PUT /recipes/:recipeId/ingredients/:ingredientId
+  - DELETE /recipes/:recipeId/ingredients/:ingredientId
 
-3. GROCERY LIST MODULE
-----------------------
-Tables:
-grocery_lists
-grocery_list_items
+DATABASE
+- Fixed ingredient category enum issue
+- Created and populated ingredients table
+- Verified foreign key relationships working
 
-Endpoints:
-GET    /grocery-lists
-GET    /grocery-lists/:id
-POST   /grocery-lists
-PUT    /grocery-lists/:id
-DELETE /grocery-lists/:id
+FRONTEND
+- Created React + Vite project
+- Installed React Router + Axios
+- Built app layout with sidebar navigation
+- Created all core pages (Dashboard, Recipes, Ingredients, Pantry, etc.)
+- Configured routing system
+- Connected frontend to backend API
+- Successfully displayed recipes from database in UI
+- Debugger configured and working
 
-Status:
-⬜ Not Started
+SYSTEM STATUS
+- Full-stack connection working (MySQL → API → React UI)
+- First end-to-end feature working: Recipes list display
 
+------------------------------------------------------------
 
-4. MEAL PLAN MODULE
--------------------
-Tables:
-meal_plans
+WHAT WE'RE DOING NEXT
+---------------------
 
-Endpoints:
-GET    /meal-plans
-GET    /meal-plans/:id
-POST   /meal-plans
-PUT    /meal-plans/:id
-DELETE /meal-plans/:id
+PRIMARY FOCUS: FRONTEND MVP COMPLETION
 
-Status:
-⬜ Not Started
+1. RECIPE DETAILS PAGE (NEXT PRIORITY)
+- Fetch GET /recipes/:id/details
+- Display:
+  - Recipe info (name, description, cuisine, calories, etc.)
+  - Ingredients list (from join table)
+- Add loading + error states
 
+2. INGREDIENTS PAGE IMPROVEMENT
+- Display categories properly (enum-based dropdown)
+- Add search + filtering UI
 
---------------------------------------------------
+3. BASIC USER FLOW COMPLETION
+- Click recipe → view full details → see ingredients
+- Improve navigation between pages
 
-AFTER MVP BACKEND
------------------
+------------------------------------------------------------
 
-5. AUTHENTICATION
------------------
-Register
-Login
-JWT
-Protected routes
+NEXT PHASE (AFTER FRONTEND MVP)
+--------------------------------
 
-Status:
-⬜ Not Started
+PANTRY MODULE (CORE FEATURE)
+- Track user ingredients
+- What can I cook functionality
 
+GROCERY LISTS (MVP)
+- Manual grocery list creation first
+- Later auto-generation from meal plans
 
-6. REACT FRONTEND
------------------
-Pages:
-Dashboard
-Recipes
-Pantry
-Meal Plans
-Grocery Lists
-Settings
+MEAL PLANS (MVP)
+- Assign recipes to days
+- Weekly structure
 
-Status:
-⬜ Not Started
+------------------------------------------------------------
 
+STRATEGY
+--------
 
-7. CONNECT FRONTEND TO BACKEND
-------------------------------
-Recipes
-Ingredients
-Pantry
-Households
-Meal Plans
-Grocery Lists
+Current Phase:
+- STOP building backend features
+- BUILD usable frontend experience
 
-Status:
-⬜ Not Started
+Goal:
+- Turn current APIs into a working app users can click through
 
-
---------------------------------------------------
-
-PARKING LOT (COME BACK LATER)
------------------------------
-
-RECIPE TAGS
------------
-recipe_tags table
-Recipe ↔ Tag APIs
-Tag filtering
-Tag search
-
-Status:
-⏸ Deferred
-
-
-RECIPE SCALING
---------------
-Scale ingredients by servings
-Household-aware scaling
-Adult vs toddler portions
-
-Status:
-⏸ Deferred
-
-
-RECIPE IMPORT
--------------
-Import recipe from URL
-Import recipe from text
-AI ingredient extraction
-
-Status:
-⏸ Deferred
-
-
-PANTRY INTELLIGENCE
--------------------
-What can I cook?
-Missing ingredients
-Pantry match %
-Suggested recipes
-
-Status:
-⏸ Deferred
-
-
-GROCERY GENERATION
-------------------
-Generate from meal plan
-Generate from pantry shortages
-
-Status:
-⏸ Deferred
-
-
-MEAL PLAN GENERATION
---------------------
-Auto weekly plans
-Health-based plans
-Household-aware plans
-
-Status:
-⏸ Deferred
-
-
-EXPIRY TRACKING
----------------
-Track expiry dates
-Expiring soon alerts
-
-Status:
-⏸ Deferred
-
-
---------------------------------------------------
-
-NEXT SESSION
-------------
-
-1. Build Households CRUD
-2. Finish Pantry CRUD
-3. Build Grocery Lists CRUD
-4. Build Meal Plans CRUD
-5. Start React Frontend
-6. Connect Frontend to APIs
-
-GOAL:
-Have a fully usable PantryPilot MVP before adding advanced intelligence features.
+Next milestone:
+- Fully functional Recipe Details page with ingredients rendering
