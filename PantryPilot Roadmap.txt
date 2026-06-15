@@ -1,0 +1,231 @@
+PANTRYPILOT ROADMAP
+===================
+
+CURRENT STATUS
+--------------
+✅ Backend setup complete
+✅ TypeScript + Express configured
+✅ MySQL database connected
+✅ VS Code debugger working
+
+✅ Recipes CRUD
+✅ Recipe Search API
+✅ Recipe Filter API
+
+✅ Ingredients CRUD
+✅ Ingredient Search API
+
+✅ Recipe ↔ Ingredient linking
+✅ Recipe Details API
+✅ Add ingredient to recipe
+✅ Update recipe ingredient
+✅ Remove recipe ingredient
+
+--------------------------------------------------
+
+MVP BACKEND REMAINING (DO THESE NEXT)
+-------------------------------------
+
+1. HOUSEHOLDS MODULE
+--------------------
+Endpoints:
+GET    /households
+GET    /households/:id
+POST   /households
+PUT    /households/:id
+DELETE /households/:id
+
+Suggested Fields:
+id
+name
+adults
+children
+toddlers
+created_at
+
+Status:
+⬜ Not Started
+
+
+2. PANTRY MODULE
+----------------
+Endpoints:
+GET    /pantry
+GET    /pantry/:id
+POST   /pantry
+PUT    /pantry/:id
+DELETE /pantry/:id
+
+Current Table:
+pantry_items
+
+Status:
+🟨 Partially Built
+⬜ Finish CRUD
+
+
+3. GROCERY LIST MODULE
+----------------------
+Tables:
+grocery_lists
+grocery_list_items
+
+Endpoints:
+GET    /grocery-lists
+GET    /grocery-lists/:id
+POST   /grocery-lists
+PUT    /grocery-lists/:id
+DELETE /grocery-lists/:id
+
+Status:
+⬜ Not Started
+
+
+4. MEAL PLAN MODULE
+-------------------
+Tables:
+meal_plans
+
+Endpoints:
+GET    /meal-plans
+GET    /meal-plans/:id
+POST   /meal-plans
+PUT    /meal-plans/:id
+DELETE /meal-plans/:id
+
+Status:
+⬜ Not Started
+
+
+--------------------------------------------------
+
+AFTER MVP BACKEND
+-----------------
+
+5. AUTHENTICATION
+-----------------
+Register
+Login
+JWT
+Protected routes
+
+Status:
+⬜ Not Started
+
+
+6. REACT FRONTEND
+-----------------
+Pages:
+Dashboard
+Recipes
+Pantry
+Meal Plans
+Grocery Lists
+Settings
+
+Status:
+⬜ Not Started
+
+
+7. CONNECT FRONTEND TO BACKEND
+------------------------------
+Recipes
+Ingredients
+Pantry
+Households
+Meal Plans
+Grocery Lists
+
+Status:
+⬜ Not Started
+
+
+--------------------------------------------------
+
+PARKING LOT (COME BACK LATER)
+-----------------------------
+
+RECIPE TAGS
+-----------
+recipe_tags table
+Recipe ↔ Tag APIs
+Tag filtering
+Tag search
+
+Status:
+⏸ Deferred
+
+
+RECIPE SCALING
+--------------
+Scale ingredients by servings
+Household-aware scaling
+Adult vs toddler portions
+
+Status:
+⏸ Deferred
+
+
+RECIPE IMPORT
+-------------
+Import recipe from URL
+Import recipe from text
+AI ingredient extraction
+
+Status:
+⏸ Deferred
+
+
+PANTRY INTELLIGENCE
+-------------------
+What can I cook?
+Missing ingredients
+Pantry match %
+Suggested recipes
+
+Status:
+⏸ Deferred
+
+
+GROCERY GENERATION
+------------------
+Generate from meal plan
+Generate from pantry shortages
+
+Status:
+⏸ Deferred
+
+
+MEAL PLAN GENERATION
+--------------------
+Auto weekly plans
+Health-based plans
+Household-aware plans
+
+Status:
+⏸ Deferred
+
+
+EXPIRY TRACKING
+---------------
+Track expiry dates
+Expiring soon alerts
+
+Status:
+⏸ Deferred
+
+
+--------------------------------------------------
+
+NEXT SESSION
+------------
+
+1. Build Households CRUD
+2. Finish Pantry CRUD
+3. Build Grocery Lists CRUD
+4. Build Meal Plans CRUD
+5. Start React Frontend
+6. Connect Frontend to APIs
+
+GOAL:
+Have a fully usable PantryPilot MVP before adding advanced intelligence features.

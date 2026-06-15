@@ -199,3 +199,118 @@ export const filterRecipes = async (filters: any) => {
 
   return rows;
 };
+
+export const addIngredientToRecipe = async (
+  recipeId: number,
+  data: any
+) => {
+  const {
+    ingredient_id,
+    quantity,
+    unit
+  } = data;
+
+  const [result]: any = await db.query(
+    `
+    INSERT INTO recipe_ingredients
+    (
+      recipe_id,
+      ingredient_id,
+      quantity,
+      unit
+    )
+    VALUES (?, ?, ?, ?)
+    `,
+    [
+      recipeId,
+      ingredient_id,
+      quantity,
+      unit
+    ]
+  );
+
+  return {
+    id: result.insertId
+  };
+};
+
+export const getRecipeDetails = async (
+  recipeId: number
+) => {
+  const [recipes]: any = await db.query(
+    `
+    SELECT *
+    FROM recipes
+    WHERE id = ?
+    `,
+    [recipeId]
+  );
+
+  if (!recipes.length) {
+    return null;
+  }
+
+  const recipe = recipes[0];
+
+  const [ingredients]: any = await db.query(
+    `
+    SELECT
+      ri.ingredient_id,
+      i.name AS ingredient_name,
+      i.category,
+      ri.quantity,
+      ri.unit
+    FROM recipe_ingredients ri
+    INNER JOIN ingredients i
+      ON i.id = ri.ingredient_id
+    WHERE ri.recipe_id = ?
+    ORDER BY i.name
+    `,
+    [recipeId]
+  );
+
+  recipe.ingredients = ingredients;
+
+  return recipe;
+};
+
+export const updateRecipeIngredient = async (
+  recipeId: number,
+  ingredientId: number,
+  quantity: number,
+  unit: string
+) => {
+  await db.query(
+    `
+    UPDATE recipe_ingredients
+    SET
+      quantity = ?,
+      unit = ?
+    WHERE recipe_id = ?
+      AND ingredient_id = ?
+    `,
+    [
+      quantity,
+      unit,
+      recipeId,
+      ingredientId
+    ]
+  );
+};
+
+export const removeRecipeIngredient = async (
+  recipeId: number,
+  ingredientId: number
+) => {
+  await db.query(
+    `
+    DELETE FROM recipe_ingredients
+    WHERE recipe_id = ?
+      AND ingredient_id = ?
+    `,
+    [
+      recipeId,
+      ingredientId
+    ]
+  );
+};
