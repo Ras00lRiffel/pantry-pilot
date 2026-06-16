@@ -10,10 +10,13 @@ import Pantry from "./pages/Pantry";
 import MealPlans from "./pages/MealPlans";
 import GroceryLists from "./pages/GroceryLists";
 import Settings from "./pages/Settings";
+import RecipeForm from "./pages/RecipesForm";
+import RecipeEdit from "./pages/RecipesEdit";
 
 function App() {
   return (
     <BrowserRouter>
+      <div className="text-red-500 text-2xl font-bold">Tailwind is working</div>
       <Routes>
         <Route element={<AppLayout />}>
           <Route path="/" element={<Dashboard />} />
@@ -30,6 +33,9 @@ function App() {
           <Route path="/grocery-lists" element={<GroceryLists />} />
 
           <Route path="/settings" element={<Settings />} />
+
+          <Route path="/recipes/new" element={<RecipeForm />} />
+          <Route path="/recipes/:id/edit" element={<RecipeEdit />} />
         </Route>
       </Routes>
     </BrowserRouter>
