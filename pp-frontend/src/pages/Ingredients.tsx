@@ -1,3 +1,9 @@
+import Layout from "../components/Layout";
+
 export default function Ingredients() {
-  return <h1>Ingredients</h1>;
+  return (
+    <Layout>
+      <h1>Ingredients</h1>
+    </Layout>
+  );
 }

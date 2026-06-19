@@ -1,3 +1,9 @@
+import Layout from "../components/Layout";
+
 export default function MealPlans() {
-  return <h1>Meal Plans</h1>;
+  return (
+    <Layout>
+      <h1>Meal Plans</h1>
+    </Layout>
+  );
 }

@@ -1,3 +1,9 @@
+import Layout from "../components/Layout";
+
 export default function Pantry() {
-  return <h1>Pantry</h1>;
+  return (
+    <Layout>
+      <h1>Pantry</h1>
+    </Layout>
+  );
 }

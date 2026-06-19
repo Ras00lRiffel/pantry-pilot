@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-
+import Layout from "../components/Layout";
 import api from "../services/api";
 import type { Recipe } from "../types/recipe";
 
@@ -46,113 +46,115 @@ export default function RecipeDetails() {
   }
 
   return (
-    <div
-      style={{
-        maxWidth: "900px",
-        margin: "0 auto",
-      }}
-    >
-      <h1>{recipe.name}</h1>
-
-      <p>{recipe.description}</p>
-
-      <hr />
-
-      <h2>Recipe Information</h2>
-
+    <Layout>
       <div
         style={{
-          display: "grid",
-          gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))",
-          gap: "12px",
-          marginBottom: "24px",
+          maxWidth: "900px",
+          margin: "0 auto",
         }}
       >
-        <div>
-          <strong>Meal Type</strong>
-          <p>{recipe.meal_type}</p>
-        </div>
+        <h1>{recipe.name}</h1>
 
-        <div>
-          <strong>Cuisine</strong>
-          <p>{recipe.cuisine}</p>
-        </div>
+        <p>{recipe.description}</p>
 
-        <div>
-          <strong>Difficulty</strong>
-          <p>{recipe.difficulty}</p>
-        </div>
+        <hr />
 
-        <div>
-          <strong>Health Score</strong>
-          <p>{recipe.health_score}/100</p>
-        </div>
+        <h2>Recipe Information</h2>
 
-        <div>
-          <strong>Calories</strong>
-          <p>{recipe.calories}</p>
-        </div>
-
-        <div>
-          <strong>Calories Per Serving</strong>
-          <p>{recipe.calories_per_serving}</p>
-        </div>
-
-        <div>
-          <strong>Prep Time</strong>
-          <p>{recipe.prep_time_minutes} min</p>
-        </div>
-
-        <div>
-          <strong>Cook Time</strong>
-          <p>{recipe.cook_time_minutes} min</p>
-        </div>
-
-        <div>
-          <strong>Total Time</strong>
-          <p>{recipe.total_time_minutes} min</p>
-        </div>
-
-        <div>
-          <strong>Servings</strong>
-          <p>{recipe.base_servings}</p>
-        </div>
-      </div>
-
-      <hr />
-
-      <h2>Ingredients</h2>
-
-      {recipe.ingredients.length === 0 ? (
-        <p>No ingredients linked yet.</p>
-      ) : (
-        <table
+        <div
           style={{
-            width: "100%",
-            borderCollapse: "collapse",
+            display: "grid",
+            gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))",
+            gap: "12px",
+            marginBottom: "24px",
           }}
         >
-          <thead>
-            <tr>
-              <th align="left">Ingredient</th>
-              <th align="left">Category</th>
-              <th align="left">Quantity</th>
-              <th align="left">Unit</th>
-            </tr>
-          </thead>
+          <div>
+            <strong>Meal Type</strong>
+            <p>{recipe.meal_type}</p>
+          </div>
 
-          <tbody>
-            {recipe.ingredients.map((ingredient) => (
-              <tr key={ingredient.ingredient_id}>
-                <td>{ingredient.ingredient_name}</td>
-                <td>{ingredient.category}</td>
-                <td>{ingredient.quantity}</td>
-                <td>{ingredient.unit}</td>
+          <div>
+            <strong>Cuisine</strong>
+            <p>{recipe.cuisine}</p>
+          </div>
+
+          <div>
+            <strong>Difficulty</strong>
+            <p>{recipe.difficulty}</p>
+          </div>
+
+          <div>
+            <strong>Health Score</strong>
+            <p>{recipe.health_score}/100</p>
+          </div>
+
+          <div>
+            <strong>Calories</strong>
+            <p>{recipe.calories}</p>
+          </div>
+
+          <div>
+            <strong>Calories Per Serving</strong>
+            <p>{recipe.calories_per_serving}</p>
+          </div>
+
+          <div>
+            <strong>Prep Time</strong>
+            <p>{recipe.prep_time_minutes} min</p>
+          </div>
+
+          <div>
+            <strong>Cook Time</strong>
+            <p>{recipe.cook_time_minutes} min</p>
+          </div>
+
+          <div>
+            <strong>Total Time</strong>
+            <p>{recipe.total_time_minutes} min</p>
+          </div>
+
+          <div>
+            <strong>Servings</strong>
+            <p>{recipe.base_servings}</p>
+          </div>
+        </div>
+
+        <hr />
+
+        <h2>Ingredients</h2>
+
+        {recipe.ingredients.length === 0 ? (
+          <p>No ingredients linked yet.</p>
+        ) : (
+          <table
+            style={{
+              width: "100%",
+              borderCollapse: "collapse",
+            }}
+          >
+            <thead>
+              <tr>
+                <th align="left">Ingredient</th>
+                <th align="left">Category</th>
+                <th align="left">Quantity</th>
+                <th align="left">Unit</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
-      )}
-    </div>
+            </thead>
+
+            <tbody>
+              {recipe.ingredients.map((ingredient) => (
+                <tr key={ingredient.ingredient_id}>
+                  <td>{ingredient.ingredient_name}</td>
+                  <td>{ingredient.category}</td>
+                  <td>{ingredient.quantity}</td>
+                  <td>{ingredient.unit}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        )}
+      </div>
+    </Layout>
   );
 }

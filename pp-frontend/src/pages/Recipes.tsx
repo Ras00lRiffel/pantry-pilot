@@ -1,7 +1,10 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useRecipes } from "../hooks/useRecipes";
 import api from "../services/api";
 import "../assets/styles/buttons.css";
+import Layout from "../components/Layout";
+import PageHeader from "../components/PageHeader";
+import RecipeCard from "../components/RecipeCard";
 
 async function deleteRecipe(id: number) {
   await api.delete(`/recipes/${id}`);
@@ -10,65 +13,31 @@ async function deleteRecipe(id: number) {
 
 export default function Recipes() {
   const { recipes, loading } = useRecipes();
-  const navigate = useNavigate();
 
   if (loading) {
     return <h2>Loading recipes...</h2>;
   }
 
   return (
-    <div>
-      <h1>Recipes</h1>
+    <Layout>
+      <div>
+        <PageHeader
+          title="Recipes"
+          action={
+            <button className="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700">
+              + New Recipe
+            </button>
+          }
+        />
 
-      <p>{recipes.length} recipes found</p>
+        <p>{recipes.length} recipes found</p>
 
-      <div
-        style={{
-          display: "grid",
-          gap: "12px",
-          marginTop: "20px",
-          marginBottom: "20px",
-        }}
-      >
-        {recipes.map((recipe) => (
-          <div
-            style={{
-              background: "white",
-              padding: "16px",
-              borderRadius: "8px",
-            }}
-          >
-            <h3>{recipe.name}</h3>
-
-            <p>{recipe.description}</p>
-
-            <small>
-              {recipe.cuisine} • {recipe.calories} calories
-            </small>
-            <div className="btn-group">
-              <Link to={`/recipes/${recipe.id}`}>
-                <button className="btn btn-secondary">View</button>
-              </Link>
-
-              <Link to={`/recipes/${recipe.id}/edit`}>
-                <button className="btn btn-secondary">Edit</button>
-              </Link>
-
-              <button
-                className="btn btn-danger"
-                onClick={() => deleteRecipe(recipe.id)}
-              >
-                Delete
-              </button>
-            </div>
-          </div>
-        ))}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {recipes.map((recipe) => (
+            <RecipeCard key={recipe.id} recipe={recipe} />
+          ))}
+        </div>
       </div>
-      <div className="btn-group">
-        <Link to="/recipes/new">
-          <button className="btn btn-primary">+ New Recipe</button>
-        </Link>
-      </div>
-    </div>
+    </Layout>
   );
 }

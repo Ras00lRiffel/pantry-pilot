@@ -16,7 +16,6 @@ import RecipeEdit from "./pages/RecipesEdit";
 function App() {
   return (
     <BrowserRouter>
-      <div className="text-red-500 text-2xl font-bold">Tailwind is working</div>
       <Routes>
         <Route element={<AppLayout />}>
           <Route path="/" element={<Dashboard />} />
